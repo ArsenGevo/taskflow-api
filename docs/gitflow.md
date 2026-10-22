@@ -54,12 +54,21 @@ Commit messages must follow this format:
 
 `{JIRA_TASK_KEY} - {description}.`
 
+The description must use the imperative mood rather than
+the past tense.
+
+A commit message should complete the sentence:
+"If applied, this commit will..."
+
 Examples:
 
-- `SCRUM-12 - Added initial repository structure.`
-- `SCRUM-12 - Added Git workflow documentation.`
+- `SCRUM-12 - Add initial repository structure.`
+- `SCRUM-12 - Add Git workflow documentation.`
+- `SCRUM-12 - Update README.`
+- `SCRUM-12 - Fix repository configuration.`
 
-Commit messages should clearly and concisely describe the changes made.
+Commit messages should clearly and concisely describe
+the changes introduced by the commit.
 
 Avoid combining unrelated changes in a single commit.
 
@@ -71,6 +80,15 @@ All changes must be submitted through Pull Requests.
 
 - Regular feature branches must target `main`.
 - Subtask branches belonging to a Story with a dedicated parent branch must target that parent Story branch.
+
+### Pull Request Title
+
+Pull Request titles should follow the same naming convention
+as commit messages and use the imperative mood.
+
+Example:
+
+`SCRUM-12 - Initialize repository and development conventions`
 
 ### Pull Request Description
 
