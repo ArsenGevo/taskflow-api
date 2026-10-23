@@ -1,0 +1,31 @@
+services:
+    taskflow-java:
+        build:
+            context: ./sources/java
+            dockerfile: Dockerfile
+            args:
+                USER_ID: ${HOST_UID}
+                GROUP_ID: ${HOST_GID}
+        container_name: taskflow-java
+        environment:
+            DB_HOST: taskflow-db
+            DB_NAME: ${DB_NAME}
+            DB_USER: ${DB_USER}
+            DB_PASS: ${DB_PASS}
+        volumes:
+            - ../:/app
+            - ./data/maven-cache:/home/app/.m2
+        ports:
+            - "8080:8080"
+        depends_on:
+            - taskflow-db
+
+    taskflow-db:
+        image: postgres:18.6
+        container_name: taskflow-db
+        environment:
+            POSTGRES_DB: ${DB_NAME}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_PASSWORD: ${DB_PASS}
+        volumes:
+            - ./data/postgres-db:/var/lib/postgresql
